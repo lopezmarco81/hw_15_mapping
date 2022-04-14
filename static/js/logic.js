@@ -168,8 +168,8 @@ function createMap(data, plate_data) {
 
     legend.onAdd = function() {
         var div = L.DomUtil.create('div', 'info legend');
-        var labels = ["<10", "10-30", "30-70", "70+"];
-        var colors = ["green", "yellow", "orange", "red"];
+        var labels = ["-10-10", "10-30", "30-50","50-70", "70-90", "90+"];
+        var colors = ["green", "yellow", "gold", "orange", "red", "firebrick"];
 
         for (let i = 0; i < labels.length; i++) {
             let label = labels[i];
@@ -190,14 +190,18 @@ function getRadius(mag) {
 
 function getColor(depth) {
 
-    let color = 'red';
+    let color = 'firebrick';
 
-    if (depth >= 70) {
+    if (depth >= 90) {
+        color = "firebrick";
+    } else if (depth >= 70) {
         color = "red";
-    } else if (depth >= 30) {
+    } else if (depth >= 50) {
         color = "orange";
+    } else if (depth >= 30) {
+        color = "gold";
     } else if (depth >= 10) {
-        color = "yellow";
+        color = "yellow";    
     } else {
         color = 'green';
     }
